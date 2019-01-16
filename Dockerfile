@@ -20,17 +20,17 @@ RUN     apk add --update --no-cache nginx nodejs nodejs-npm git curl wget gcc ca
 
 # Checkout the master branches of Graphite, Carbon and Whisper and install from there
 RUN     mkdir /src                                                                                                   &&\
-        git clone --depth=1 --branch master https://github.com/graphite-project/whisper.git /src/whisper             &&\
+        git clone --depth=1 --branch 1.1.5 https://github.com/graphite-project/whisper.git /src/whisper             &&\
         cd /src/whisper                                                                                              &&\
         pip install . --no-cache-dir                                                                                 &&\
         python setup.py install
 
-RUN     git clone --depth=1 --branch master https://github.com/graphite-project/carbon.git /src/carbon               &&\
+RUN     git clone --depth=1 --branch 1.1.5 https://github.com/graphite-project/carbon.git /src/carbon               &&\
         cd /src/carbon                                                                                               &&\
         pip install . --no-cache-dir                                                                                 &&\
         python setup.py install
 
-RUN     git clone --depth=1 --branch master https://github.com/graphite-project/graphite-web.git /src/graphite-web   &&\
+RUN     git clone --depth=1 --branch 1.1.5 https://github.com/graphite-project/graphite-web.git /src/graphite-web   &&\
         cd /src/graphite-web                                                                                         &&\
         pip install . --no-cache-dir                                                                                 &&\
         python setup.py install                                                                                      &&\
@@ -43,7 +43,7 @@ RUN     git clone --depth=1 --branch master https://github.com/etsy/statsd.git /
 # Install Grafana
 RUN     mkdir /src/grafana                                                                                           &&\
         mkdir /opt/grafana                                                                                           &&\
-        curl https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.2.2.linux-amd64.tar.gz  \
+        curl https://dl.grafana.com/oss/release/grafana-5.4.3.linux-amd64.tar.gz  \
              -o /src/grafana.tar.gz                                                                                  &&\
         tar -xzf /src/grafana.tar.gz -C /opt/grafana --strip-components=1                                            &&\
         rm /src/grafana.tar.gz
