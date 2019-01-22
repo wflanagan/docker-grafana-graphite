@@ -40,3 +40,6 @@ TIME_ZONE = 'UTC'
 #DATABASE_PASSWORD = 'graphite-is-awesome'
 #DATABASE_HOST = 'mysql.mycompany.com'
 #DATABASE_PORT = '3306'
+
+FIND_TIMEOUT = 999.0  # default 3.0 see below
+FETCH_TIMEOUT = 999.0  # default 6.0 see below
